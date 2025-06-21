@@ -33,6 +33,13 @@ public class MazeGenerator {
         for (int i = 1; i <= robotCount; i++) {
             int x = rand.nextInt(sideLength);
             int y = rand.nextInt(sideLength);
+            if (maze[x][y] == robotToken){
+                if (i > sideLength * sideLength) {
+                    break;
+                }
+                i--;
+                continue;
+            }
             maze[x][y] = robotToken;
         }
     }

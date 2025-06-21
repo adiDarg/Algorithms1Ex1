@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
     final static int SIDE_LENGTH = 10; //Size of maze will be SIDE_LENGTH * SIDE_LENGTH
     final static double CHANCE_OF_OBSTACLE = 0.3; //Chance of a square being an obstacle from 0-1
-    final static int ROBOT_COUNT = 20; //Number of robots
+    final static int ROBOT_COUNT = 5; //Number of robots
     final static int ROBOT_TOKEN = -2; //Temp marking for robot spots
     final static int UNREACHABLE_TOKEN = -1; //Temp marking for obstacle spots
     final static int MAX_DIGITS_PER_NUM = 4; //Recommended to do +1 for readable results. For ex: If largest collective distance is 100, then MDPN will be 4. Used to format map printing
