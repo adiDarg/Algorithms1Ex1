@@ -1,5 +1,9 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+
 public class MapPrinter {
     private int robotToken;
     private int unreachableToken;
@@ -64,19 +68,35 @@ public class MapPrinter {
         }
     }
 
-    public void printSearchedMap(int[][] map){
+    public void printSearchedMap(int[][] map, List<Node> robots,boolean includeRobotDistance){
+        HashMap<Integer, HashSet<Integer>> robotCords = new HashMap<>();
+        for (Node robot: robots){
+            if (!robotCords.containsKey(robot.x)){
+                robotCords.put(robot.x, new HashSet<>());
+            }
+            robotCords.get(robot.x).add(robot.y);
+        }
         for (int x = 0; x < map.length; x++){
             for (int y = 0; y < map[x].length; y++){
                 int number = map[x][y];
                 int copy = number;
-                if (number == unreachableToken || number == robotToken){
+                if (number == unreachableToken){
                     copy = 1;
+                }
+                if (robotCords.getOrDefault(x,new HashSet<>()).contains(y)){
+                    copy *= 10;
+                    if (!includeRobotDistance){
+                        copy = 1;
+                    }
                 }
                 StringBuilder toPrint = new StringBuilder();
                 for (int i = 1; i < maxDigitsPerNumber - Math.log10(copy); i++){
                     toPrint.append(" ");
                 }
-                if (number == robotToken){
+                if (robotCords.getOrDefault(x,new HashSet<>()).contains(y)){
+                    if (includeRobotDistance){
+                        toPrint.append(number);
+                    }
                     toPrint.append(robotChar);
                 }
                 else if (number == unreachableToken){

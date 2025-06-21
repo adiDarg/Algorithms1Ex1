@@ -57,12 +57,7 @@ public class BFSRunner {
                     visited.put(current.x, new HashSet<>());
                 }
                 visited.get(current.x).add(current.y);
-                if (current.isRobot){
-                    map[current.x][current.y] = robotToken;
-                }
-                if (map[current.x][current.y] != robotToken) {
-                    map[current.x][current.y] += current.d;
-                }
+                map[current.x][current.y] += current.d;
                 for (Node neighbor : current.neighbors) {
                     if ((!visited.containsKey(neighbor.x) || !visited.get(neighbor.x).contains(neighbor.y)) && !queue.contains(neighbor)) {
                         neighbor.d = current.d + 1;
