@@ -1,8 +1,8 @@
-package org.example;
+package org.example.RobotPathEx;
 
 import java.util.List;
 
-public class Main {
+public class MainRobotEx {
     final static int SIDE_LENGTH = 10; //Size of maze will be SIDE_LENGTH * SIDE_LENGTH
     final static double CHANCE_OF_OBSTACLE = 0.3; //Chance of a square being an obstacle from 0-1
     final static int ROBOT_COUNT = 5; //Number of robots
